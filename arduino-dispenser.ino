@@ -10,7 +10,6 @@
 
 
 // IR Breakbeam Components
-#define LEDPIN 13 // this will turn on the LED on the Arduino when the beam is broken
 #define SENSORPIN 4
 int currentSensorState = 0, lastSensorState = 0;
 
@@ -51,8 +50,7 @@ void setup() {
 
 
 
-  // initialize the LED pin as an output:
-  pinMode(LEDPIN, OUTPUT);      
+
   // initialize the sensor pin as an input:
   pinMode(SENSORPIN, INPUT);     
   digitalWrite(SENSORPIN, HIGH); // turn on the pullup
@@ -77,17 +75,6 @@ void loop() {
 
     // read the state of the pushbutton value:
   currentSensorState = digitalRead(SENSORPIN);
-
-  // check if the sensor beam is broken
-  // if it is, the currentSensorState is LOW:
-  if (currentSensorState == LOW) {     
-    // turn LED on:
-    digitalWrite(LEDPIN, HIGH);  
-  } 
-  else {
-    // turn LED off:
-    digitalWrite(LEDPIN, LOW); 
-  }
   
   if (currentSensorState && !lastSensorState) {
     Serial.println("Unbroken");
