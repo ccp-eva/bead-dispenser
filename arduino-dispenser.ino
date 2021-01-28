@@ -1,9 +1,21 @@
 
+// --------------------------------------------------------------------------------------------------
 // Adjusted Example 5 from: https://forum.arduino.cc/index.php?topic=396450.0
 // ... to test and debug different stepper motor steps, directions, style using Serial Monitor input
+// --------------------------------------------------------------------------------------------------
+// Extend by the Arduino IR Breakbeam example: https://learn.adafruit.com/ir-breakbeam-sensors/arduino
+
 
 #include <Adafruit_MotorShield.h>
 
+
+// IR Breakbeam Components
+#define LEDPIN 13 // this will turn on the LED on the Arduino when the beam is broken
+#define SENSORPIN 4
+int currentSensorState = 0, lastSensorState = 0;
+
+
+// Stepper Motor Components
 // Create the motor shield object with the default I2C address
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
@@ -37,6 +49,15 @@ void setup() {
 
   AFMS.begin();  // create with the default frequency 1.6KHz
 
+
+
+  // initialize the LED pin as an output:
+  pinMode(LEDPIN, OUTPUT);      
+  // initialize the sensor pin as an input:
+  pinMode(SENSORPIN, INPUT);     
+  digitalWrite(SENSORPIN, HIGH); // turn on the pullup
+  
+
 }
 
 //============
@@ -51,6 +72,32 @@ void loop() {
     showParsedData();
     newData = false;
   }
+
+
+
+    // read the state of the pushbutton value:
+  currentSensorState = digitalRead(SENSORPIN);
+
+  // check if the sensor beam is broken
+  // if it is, the currentSensorState is LOW:
+  if (currentSensorState == LOW) {     
+    // turn LED on:
+    digitalWrite(LEDPIN, HIGH);  
+  } 
+  else {
+    // turn LED off:
+    digitalWrite(LEDPIN, LOW); 
+  }
+  
+  if (currentSensorState && !lastSensorState) {
+    Serial.println("Unbroken");
+  } 
+  if (!currentSensorState && lastSensorState) {
+    Serial.println("Broken");
+  }
+  lastSensorState = currentSensorState;
+
+  
 }
 
 //============
