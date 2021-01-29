@@ -7,6 +7,13 @@
 
 
 #include <Adafruit_MotorShield.h>
+#include <avr/wdt.h>
+
+
+// We use plate that has 8 equi distant holes in it
+// The Nema 14 stepper motor we use makes 200 steps for a full revolution (1.8°)
+// That yields to 200 steps / 8 holes = 25 steps per hole
+// Our stepper algorithm makes a full turn (25 steps), and delay
 
 
 // IR Breakbeam Components
@@ -23,14 +30,13 @@ Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 Adafruit_StepperMotor *myMotor = AFMS.getStepper(200, 1);
 
 
-
 const byte numChars = 32;
 char receivedChars[numChars];
 char tempChars[numChars];        // temporary array for use when parsing
 
 // variables to hold the parsed data
 uint16_t motorSpeed = 10; // Set the delay for the Stepper Motor speed in RPM.
-uint16_t motorSteps = 20; // The number of steps we want to move
+uint16_t objectDrops = 0; // The number of steps we want to move
 uint8_t motorDir = FORWARD; // FORWARD (1), BACKWARD (2)
 uint8_t motorStyle = INTERLEAVE; // How to perform each step, can be SINGLE (1), DOUBLE (2), INTERLEAVE (3) or MICROSTEP (4)
 
@@ -70,19 +76,6 @@ void loop() {
     showParsedData();
     newData = false;
   }
-
-
-
-    // read the state of the pushbutton value:
-  currentSensorState = digitalRead(SENSORPIN);
-  
-  if (currentSensorState && !lastSensorState) {
-    Serial.println("Unbroken");
-  } 
-  if (!currentSensorState && lastSensorState) {
-    Serial.println("Broken");
-  }
-  lastSensorState = currentSensorState;
 
   
 }
@@ -131,7 +124,7 @@ void parseData() {      // split the data into its parts
   motorSpeed = atoi(strtokIndx);  // copy it to messageFromPC
 
   strtokIndx = strtok(NULL, ","); // this continues where the previous call left off
-  motorSteps = atoi(strtokIndx);     // convert this part to an integer
+  objectDrops = atoi(strtokIndx);     // convert this part to an integer
 
   strtokIndx = strtok(NULL, ",");
   motorDir = atoi(strtokIndx);     // convert this part to a float
@@ -139,11 +132,54 @@ void parseData() {      // split the data into its parts
   strtokIndx = strtok(NULL, ",");
   motorStyle = atoi(strtokIndx);     // convert this part to a float
 
-  // EXECUTE PARSED DATA
-  myMotor->setSpeed(motorSpeed);
-  myMotor->step(motorSteps, motorDir, motorStyle);
 
-  // EXECUTE SHAKING (FORWARD/BACKWORD)
+
+  // EXECUTE PARSED DATA
+
+
+  
+  myMotor->setSpeed(motorSpeed);
+
+  
+  int i = 0; // object drop counter 
+  while (i <= objectDrops)
+  {
+      // read the state of the pushbutton value:
+      currentSensorState = digitalRead(SENSORPIN);
+      Serial.println(i);
+      
+      if (currentSensorState && !lastSensorState) {
+        Serial.println("Unbroken");
+      } 
+      
+      if (!currentSensorState && lastSensorState) {
+        Serial.println("Broken");
+        ++i;
+        if (i == objectDrops) {
+              myMotor->step(0, 1, 1);
+              myMotor->setSpeed(0);
+              reboot();
+          }
+      }
+      
+      lastSensorState = currentSensorState;
+
+      myMotor->step(25, motorDir, motorStyle);
+  }
+  
+  
+
+
+
+// REDUCE CODE AND ASK IN THE FORUM
+   
+  
+
+
+
+
+
+
   
 }
 
@@ -152,10 +188,17 @@ void parseData() {      // split the data into its parts
 void showParsedData() {
   Serial.print("Motor speed (RPM): ");
   Serial.println(motorSpeed);
-  Serial.print("Motor Steps: ");
-  Serial.println(motorSteps);
+  Serial.print("Object Drops: ");
+  Serial.println(objectDrops);
   Serial.print("Motor Direction: ");
   Serial.println(motorDir);
   Serial.print("Motor Style: ");
   Serial.println(motorStyle);
+}
+
+
+void reboot() {
+  wdt_disable();
+  wdt_enable(WDTO_15MS);
+  while (1) {}
 }
