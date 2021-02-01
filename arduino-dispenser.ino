@@ -17,8 +17,10 @@
 #define LEDPIN 13 
 #define SENSORPIN 4
  
-// variables will change:
+// IR breakbeam sensor state variables
 int currentSensorState = 0, lastSensorState = 0; // either LOW or HIGH (i.e., 0 or 1. NB: LOW means beam is broken, HIGH means unbroken)
+
+int counter = 0;
  
 void setup() {
   // initialize the LED pin as an output:
@@ -59,8 +61,13 @@ void loop(){
   } 
   if (currentSensorState == LOW && lastSensorState == HIGH) {
     Serial.println("Broken");
+    
+    // if beam is broken we can assume that an object is blocking it, so incrementing the counter
+    counter += 1;
   }
 
-  
+  Serial.println(counter);
+
+  // this should be at the very end
   lastSensorState = currentSensorState;
 }
