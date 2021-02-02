@@ -34,8 +34,7 @@ int dataNumber = 0;
 
 void setup() {
   // initialize the sensor pin as an input:
-  pinMode(SENSORPIN, INPUT);
-  digitalWrite(SENSORPIN, HIGH);
+  pinMode(SENSORPIN, INPUT_PULLUP);
 
   // create with the default frequency 1.6KHz
   AFMS.begin();
