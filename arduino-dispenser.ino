@@ -5,6 +5,14 @@
 // - Extend by the Arduino IR Breakbeam example: https://learn.adafruit.com/ir-breakbeam-sensors/arduino
 // ------------------------------------------------------------------------------------------------------
 
+#include <Wire.h>
+#include <Adafruit_MotorShield.h>
+
+// Create the motor shield object with the default I2C address
+Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+// Connect a stepper motor with 200 steps per revolution (1.8 degree) to motor port #1 (M1 and M2)
+Adafruit_StepperMotor *myMotor = AFMS.getStepper(200, 1);
+
 // =============================================
 // IR BREAKBEAM PART
 // =============================================
@@ -28,6 +36,11 @@ void setup() {
   // initialize the sensor pin as an input:
   pinMode(SENSORPIN, INPUT);
   digitalWrite(SENSORPIN, HIGH);
+
+  // create with the default frequency 1.6KHz
+  AFMS.begin();
+  myMotor->setSpeed(50); // 10 rpm
+  
   Serial.begin(9600);
   Serial.println("Arduino Ready");
 }
@@ -37,10 +50,10 @@ void loop() {
   // get serial input
   recvWithEndMarker();
 
+  // initialize motor with given user input
   if (newData == true) {
     initMotor();
   }
-
 }
 
 void recvWithEndMarker() {
@@ -76,6 +89,7 @@ void initMotor() {
   isCounting = true;
 
   while (isCounting) {
+    myMotor->step(1, FORWARD, SINGLE);
     // --------------------------------------------------------------------------------------------------
     // Sensor Algorithm
     // --------------------------------------------------------------------------------------------------
@@ -93,7 +107,8 @@ void initMotor() {
     }
     // --------------------------------------------------------------------------------------------------
 
-    Serial.println(counter);
+    Serial.println(counter); 
+
 
     // synchronize states (this should be at the end)
     lastSensorState = currentSensorState;
@@ -107,5 +122,6 @@ void initMotor() {
     }
   }
 
+  // reset new data to avoid re-initing the motor
   newData = false;
 }
