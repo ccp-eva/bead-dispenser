@@ -6,6 +6,7 @@
 // ------------------------------------------------------------------------------------------------------
 
 #include <Wire.h>
+#include <AccelStepper.h>
 #include <Adafruit_MotorShield.h>
 
 // Create the motor shield object with the default I2C address
@@ -32,18 +33,38 @@ char receivedChars[32]; // an array to store the received data
 bool newData = false;
 int dataNumber = 0;
 
+// =============================================
+// MOTOR
+// =============================================
+// SINGLE may create bad motion behavior!
+void forwardstep1() {  
+  myMotor->onestep(FORWARD, DOUBLE);
+}
+void backwardstep1() {  
+  myMotor->onestep(BACKWARD, DOUBLE);
+}
+
+AccelStepper Astepper1(forwardstep1, backwardstep1); // use functions to step
+
+
+// =============================================
+// SETUP
+// =============================================
 void setup() {
   // initialize the sensor pin as an input:
   pinMode(SENSORPIN, INPUT_PULLUP);
 
-  // create with the default frequency 1.6KHz
   AFMS.begin();
-  myMotor->setSpeed(50); // 10 rpm
+  Astepper1.setMaxSpeed(1000);
+  Astepper1.setSpeed(200); 
   
   Serial.begin(9600);
   Serial.println("Arduino Ready");
 }
 
+// =============================================
+// LOOP
+// =============================================
 void loop() {
 
   // get serial input
@@ -54,6 +75,10 @@ void loop() {
     initMotor();
   }
 }
+
+// =============================================
+// FUNCTIONS
+// =============================================
 
 void recvWithEndMarker() {
   static byte ndx = 0;
@@ -88,7 +113,8 @@ void initMotor() {
   isCounting = true;
 
   while (isCounting) {
-    myMotor->step(1, FORWARD, SINGLE);
+    // start Motor
+    Astepper1.runSpeed();
     // --------------------------------------------------------------------------------------------------
     // Sensor Algorithm
     // --------------------------------------------------------------------------------------------------
@@ -114,6 +140,8 @@ void initMotor() {
 
     // reset isCounting when reached the counter
     if (dataNumber == counter) {
+      // stop motor
+      Astepper1.stop();
       Serial.println("Done Counting");
       isCounting = false;
       // reset counter to 0 to prepare for next runs
