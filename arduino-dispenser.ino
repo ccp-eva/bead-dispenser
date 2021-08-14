@@ -55,8 +55,7 @@ void setup() {
   pinMode(SENSORPIN, INPUT_PULLUP);
 
   AFMS.begin();
-  Astepper1.setMaxSpeed(1000);
-  Astepper1.setSpeed(200); 
+  Astepper1.setMaxSpeed(500);
   
   Serial.begin(9600);
   Serial.println("Arduino Ready");
@@ -114,6 +113,7 @@ void initMotor() {
 
   while (isCounting) {
     // start Motor
+    Astepper1.setSpeed(300);
     Astepper1.runSpeed();
     // --------------------------------------------------------------------------------------------------
     // Sensor Algorithm
