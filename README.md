@@ -11,7 +11,7 @@
 ---
 
 - [CCP Bead Dispenser](#ccp-bead-dispenser)
-  - [Demo](#demo)
+  - [Demos](#demos)
   - [Overview](#overview)
     - [Power Supply](#power-supply)
     - [What’s happening](#whats-happening)
@@ -38,11 +38,9 @@ https://user-images.githubusercontent.com/9831678/168770235-a08dd8c6-3110-4d33-b
 
 https://user-images.githubusercontent.com/9831678/169273257-3fe446e2-8038-4976-b90e-d845b3b6b8b8.mp4
 
-
-
 ## Overview
 
-This DIY bead dispenser was used as a companion apparatus for [Sarah Pope-Caldwell’s](https://sarahmichellepope.com/) _Nifty Shifty_ Game Battery. Specifically, the dispenser receives a signal (i.e., a positive integer) from the game, which starts a NEMA 14 stepper motor releasing the number of requested beads. The Arduino sketech was developed by [Steven Kalinke](https://www.eva.mpg.de/de/comparative-cultural-psychology/staff/steven-kalinke/).
+This DIY bead dispenser was used as a companion apparatus for [Sarah Pope-Caldwell’s](https://sarahmichellepope.com/) _Nifty Shifty_ Game Battery. Specifically, the dispenser receives a signal (i.e., a positive integer) from the game, which starts a NEMA 14 stepper motor releasing the number of requested beads. The Arduino sketch was developed by [Steven Kalinke](https://www.eva.mpg.de/de/comparative-cultural-psychology/staff/steven-kalinke/).
 
 Initially, [Dylan T Guenther](https://neurology.ufl.edu/profile/guenther-dylan/) provided us with his modifications from [thingiverse](https://www.thingiverse.com/thing:1771176), and then [Raik Pieszek](https://www.eva.mpg.de/comparative-cultural-psychology/staff/raik-pieszek/) made significant modifications to meet our requirements. You will find all the `stl` files within the repository’s [`stl` directory](./stl/).
 
@@ -61,7 +59,7 @@ Check the [issue tab](https://github.com/ccp-eva/bead-dispenser/issues) for open
 #### Hardware
 
 - [ ] Use Gewindemuffen, -hülse, or Stangenmutter to replace the plastic pillows, Or better use Gewindestifte/Madenschrauben (M5/60mm) (https://www.fenau.eu/gewindeterminal-mit-innengewinde-linksgewinde-fuer-seil-von-o-3-mm-bis-o-8-mm-v2a.html)
-- [ ] Make a design, that allows flexible adjustment for the disk hole sizes
+- [ ] Make a design that allows flexible adjustment for the disk hole sizes
 - [ ] Heat space for stepper motor
 - [ ] Motor Thron
 - [ ] Universal mount for the flexible funnel sizes
@@ -90,20 +88,20 @@ Check the [issue tab](https://github.com/ccp-eva/bead-dispenser/issues) for open
 - [Documentation](https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino/install-headers)
 - [Guide](https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino/install-headers#installing-with-stacking-headers-405903-16)
 
-- Place the Shield stacking headers on the Adafruit shield (terminals are optional for this setup) and solder them at the bottom of it.
+- Place the Shield stacking headers on the Adafruit shield (terminals are optional for this setup) and solder them its bottom
 - You may need to buy stacking headers as the Adafruit shield does not come with them (it did actually for our case)
 
 <p align="middle">
   <img src="assets/stacking-headers.png" width="200" />
   <img src="assets/soldering-motor-shield.png" width="200" /><br>
-  Soldering stacking headers to the Motorshield (they may come pre-solderd for Motor Shield v.2.3)
+  Soldering stacking headers to the Motorshield (they may come pre-soldered for Motor Shield v.2.3)
 </p>
 
 ### Wiring the Stepper Motor on the Adafruit Shield
 
 #### Check which coils make a pair
 
-Either use a Multimeter and figure out the two wires having the lowest resistance, those make a coil pair. If you do not have a Multimeter, connect their wire tips: Now turn the stepper motor: If the rotation resistance is high, then the two cables belong together (i.e., making a coil pair).
+Either use a Multimeter and figure out the two wires having the lowest resistance; those make a coil pair. If you do not have a Multimeter, connect their wire tips: Now turn the stepper motor: If the rotation resistance is high, the two cables belong together (i.e., making a coil pair).
 
 #### Connect the Motor to the Shield
 
@@ -120,12 +118,12 @@ Docs & Datasheet: https://www.adafruit.com/product/2167
 <p align="middle">
   <img src="assets/ir-sensors.png" width="600" />
   
-  Left Image: The receiver is on the left, it has three wires. The transmitter is on the right, it has two wires
+  Left Image: The receiver is on the left; it has three wires. The transmitter is on the right; it has two wires.
 </p>
 
 #### Add DuPont Connectors to the wires
 
-If your IR break beam sensors came with DuPont (see [JST connector - RE](https://en.wikipedia.org/wiki/JST_connector)) connectors you can skip this step. If not, use a crimp tool to add crimps.
+If your IR break beam sensors came with DuPont (see [JST connector - RE](https://en.wikipedia.org/wiki/JST_connector)) connectors, you can skip this step. If not, use a crimp tool to add crimps.
 
 <p align="middle">
   <img src="assets/du-pont-connectors.png" width="600" />
@@ -155,27 +153,27 @@ Use **M4 threading taps** for the following 3D components:
 <!-- prettier-ignore -->
 |  |  |
 |-|-|
-| The four columns from the **roof** print-out (you may need to get rid of some residuals from the print before). Use a screw (or whatever) to push out residuals from the print. Thread after cleaning. | ![](assets/roof-cleaning.png) |
+| The four pillars from the **roof** print-out (you may need to get rid of some residuals from the print before). Use a screw (or whatever) to push out residuals from the print. Thread after cleaning. | ![](assets/roof-cleaning.png) |
 | The four holes from the **dispenser** holes | ![](assets/dispenser-threading.png) |
 | The side of the dispenser. Drill an M4 thread in the side of the dispenser as a fixation for the IR beam breaker | ![](assets/dispenser-threading-sides.png) |
 | Finally, drill an M4 thread in the IR break beam transmitter & receiver (this will be screwed together with the dispenser later.  | ![](assets/ir-threading.png) |
 
 ### Disk Treatment
 
-- Depending on the 3D printer the bottom of the disk may be a bit rough, and therefore creating resistance. Use fine sandpaper.
-- Depending on the 3D printer the disk’s hole may be too narrow for the stepper motor’s D-shaft. Roll a thin layer of sand paper to increase the inner diameter.
+- Depending on the 3D printer, the bottom of the disk may be a bit rough, therefore creating resistance. Use fine sandpaper to reduce friction.
+- Depending on the 3D printer, the disk’s hole may be too narrow for the stepper motor’s D-shaft. Roll a thin layer of sandpaper to increase the inner diameter.
 
 <p align="middle">
   <img src="assets/disk-diameter-fit.png" height="200" />
   <img src="assets/disk-sanding.gif" height="200" /><br>
-  Left: Increase inner disks diameter. Right: Sand paper the bottom of the disk.
+  Left: Increase inner disk diameter. Right: Sandpaper the bottom of the disk.
 </p>
 
 ## 3D Components Overview
 
 <img align="right" width="180" src="assets/pellet-dispenser-model-final.gif">
 
-Our model is composed of seven components, these are from bottom to top:
+Our model is composed of seven components; these are from bottom to top:
 
 - Box
 - Slide
