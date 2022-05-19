@@ -42,6 +42,7 @@ Check the [issue tab](https://github.com/ccp-eva/bead-dispenser/issues) for open
 
 ## Hardware Components
 
+<!-- prettier-ignore -->
 | Component                                                                   | Description                                                                                                                                                                                                                                                                                                 | Approx. Price |
 | --------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | Arduino Uno                                                                 | https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6                                                                                                                                                                                                                                         |               |
@@ -125,11 +126,47 @@ The **transmitter LED** (sender) has **two** colored wires; connect the
 
 Use **M4 threading taps** for the following 3D components:
 
-|                                                                                                                                                                                                        |                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| The four columns from the **roof** print-out (you may need to get rid of some residuals from the print before). Use a screw (or whatever) to push out residuals from the print. Thread after cleaning. | ![](assets/roof-cleaning.png)             |
-| The four holes from the **dispenser** holes                                                                                                                                                            | ![](assets/dispenser-threading.png)       |
-| The side of the dispenser                                                                                                                                                                              | ![](assets/dispenser-threading-sides.png) |
-| -------------                                                                                                                                                                                          | -------                                   |
+<!-- prettier-ignore -->
+|  |  |
+|-|-|
+| The four columns from the **roof** print-out (you may need to get rid of some residuals from the print before). Use a screw (or whatever) to push out residuals from the print. Thread after cleaning. | ![](assets/roof-cleaning.png) |
+| The four holes from the **dispenser** holes | ![](assets/dispenser-threading.png) |
+| The side of the dispenser. Drill an M4 thread in the side of the dispenser as a fixation for the IR beam breaker | ![](assets/dispenser-threading-sides.png) |
+| Finally, drill an M4 thread in the IR break beam transmitter & receiver (this will be screwed together with the dispenser later.  | ![](assets/ir-threading.png) |
+
+### Disk Treatment
+
+- Depending on the 3D printer the bottom of the disk may be a bit rough, and therefore creating resistance. Use fine sandpaper.
+- Depending on the 3D printer the disk’s hole may be too narrow for the stepper motor’s D-shaft. Roll a thin layer of sand paper to increase the inner diameter.
+
+<p align="middle">
+  <img src="assets/disk-diameter-fit.png" height="200" />
+  <img src="assets/disk-sanding.gif" height="200" /><br>
+  Left: Increase inner disks diameter. Right: Sand paper the bottom of the disk.
+</p>
 
 ## 3D Components Overview
+
+<img align="right" width="180" src="assets/pellet-dispenser-model-final.gif">
+
+Our model is composed of seven components, these are from bottom to top:
+
+- Box
+- Slide
+- Door
+- Roof
+- Dispenser
+- Disk
+- Funnel
+
+<!-- prettier-ignore -->
+| Component | STL File | Isometric Preview |
+|-|-|-|
+| **Box** — Housing for the Arduino & Adafruit Shield | [Download](stl/box.stl) | ![](../assets/../bead-dispenser/assets/box.png) |
+| **Slide** — To fixate the Arduino’s plate with the slide | [Download](stl/slide.stl) | ![](../assets/../bead-dispenser/assets/slide.png) |
+| **Door** — Sliding door that closes the box | [Download](stl/door.stl) | ![](../assets/../bead-dispenser/assets/door.png) |
+| **Roof** — Coveres the box, and provides a housing for a NEMA 14 stepper motor | [Download](stl/roof.stl) | ![](../assets/../bead-dispenser/assets/roof.png) |
+| **Dispenser** — Holding the disc and provides a tube | [Download](stl/dispenser.stl) | ![](../assets/../bead-dispenser/assets/dispenser.png) |
+| **Disk** — Revolving magazine to release beads or other objects | [Download](stl/disk.stl) | ![](../assets/../bead-dispenser/assets/disk.png) |
+| **Funnel** — Bead funnel/storage unit | [Download](stl/funnel.stl) | ![](../assets/../bead-dispenser/assets/funnel.png)              |
+| **Lid** — Get yourself some Pringles. Use the Pringle’s lid to seal the funnel. (optional) | — | ![](../assets/../bead-dispenser/assets/pringles-lid.png) |
