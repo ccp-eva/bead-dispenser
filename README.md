@@ -40,7 +40,7 @@ https://user-images.githubusercontent.com/9831678/168770235-a08dd8c6-3110-4d33-b
 
 This DIY bead dispenser was used as a companion apparatus for [Sarah Pope-Caldwell’s](https://sarahmichellepope.com/) _Nifty Shifty_ Game Battery. Specifically, the dispenser receives a signal (i.e., a positive integer) from the game, which starts a NEMA 14 stepper motor releasing the number of requested beads. The Arduino sketech was developed by [Steven Kalinke](https://www.eva.mpg.de/de/comparative-cultural-psychology/staff/steven-kalinke/).
 
-Initially, [Dylan T Guenther](https://neurology.ufl.edu/profile/guenther-dylan/) provided us with his modifications from [thingiverse](https://www.thingiverse.com/thing:1771176), and then Raik Pieszek made significant modifications to meet our requirements. You will find all the `stl` files within the repository’s [`stl` directory](./stl/).
+Initially, [Dylan T Guenther](https://neurology.ufl.edu/profile/guenther-dylan/) provided us with his modifications from [thingiverse](https://www.thingiverse.com/thing:1771176), and then [Raik Pieszek](https://www.eva.mpg.de/comparative-cultural-psychology/staff/raik-pieszek/) made significant modifications to meet our requirements. You will find all the `stl` files within the repository’s [`stl` directory](./stl/).
 
 ### Power Supply
 
