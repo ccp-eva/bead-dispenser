@@ -184,11 +184,11 @@ Our model is composed of seven components, these are from bottom to top:
 <!-- prettier-ignore -->
 | Component | STL File | Isometric Preview |
 |-|-|-|
-| **Box** — Housing for the Arduino & Adafruit Shield | [Download](stl/box.stl) | ![](../assets/../bead-dispenser/assets/box.png) |
-| **Slide** — To fixate the Arduino’s plate with the slide | [Download](stl/slide.stl) | ![](../assets/../bead-dispenser/assets/slide.png) |
-| **Door** — Sliding door that closes the box | [Download](stl/door.stl) | ![](../assets/../bead-dispenser/assets/door.png) |
-| **Roof** — Coveres the box, and provides a housing for a NEMA 14 stepper motor | [Download](stl/roof.stl) | ![](../assets/../bead-dispenser/assets/roof.png) |
-| **Dispenser** — Holding the disc and provides a tube | [Download](stl/dispenser.stl) | ![](../assets/../bead-dispenser/assets/dispenser.png) |
-| **Disk** — Revolving magazine to release beads or other objects | [Download](stl/disk.stl) | ![](../assets/../bead-dispenser/assets/disk.png) |
-| **Funnel** — Bead funnel/storage unit | [Download](stl/funnel.stl) | ![](../assets/../bead-dispenser/assets/funnel.png)              |
-| **Lid** — Get yourself some Pringles. Use the Pringle’s lid to seal the funnel. (optional) | — | ![](../assets/../bead-dispenser/assets/pringles-lid.png) |
+| **Box** — Housing for the Arduino & Adafruit Shield | [Download](stl/box.stl) | ![](assets/box.png) |
+| **Slide** — To fixate the Arduino’s plate with the slide | [Download](stl/slide.stl) | ![](assets/slide.png) |
+| **Door** — Sliding door that closes the box | [Download](stl/door.stl) | ![](assets/door.png) |
+| **Roof** — Coveres the box, and provides a housing for a NEMA 14 stepper motor | [Download](stl/roof.stl) | ![](assets/roof.png) |
+| **Dispenser** — Holding the disc and provides a tube | [Download](stl/dispenser.stl) | ![](assets/dispenser.png) |
+| **Disk** — Revolving magazine to release beads or other objects | [Download](stl/disk.stl) | ![](assets/disk.png) |
+| **Funnel** — Bead funnel/storage unit | [Download](stl/funnel.stl) | ![](assets/funnel.png) |
+| **Lid** — Get yourself some Pringles. Use the Pringle’s lid to seal the funnel. (optional) | — | ![](assets/pringles-lid.png) |
