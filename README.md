@@ -10,6 +10,28 @@
 
 ---
 
+- [CCP Bead Dispenser](#ccp-bead-dispenser)
+  - [Demo](#demo)
+  - [Overview](#overview)
+    - [Power Supply](#power-supply)
+    - [What’s happening](#whats-happening)
+      - [Software](#software)
+      - [Hardware](#hardware)
+  - [Hardware Components](#hardware-components)
+  - [Construction Manual](#construction-manual)
+    - [Soldering Adafruit Shield on the Arduino](#soldering-adafruit-shield-on-the-arduino)
+    - [Wiring the Stepper Motor on the Adafruit Shield](#wiring-the-stepper-motor-on-the-adafruit-shield)
+      - [Check which coils make a pair](#check-which-coils-make-a-pair)
+      - [Connect the Motor to the Shield](#connect-the-motor-to-the-shield)
+    - [IR Breakbeam Sensors Connection](#ir-breakbeam-sensors-connection)
+      - [Add DuPont Connectors to the wires](#add-dupont-connectors-to-the-wires)
+    - [Connect IR Breakbeam Sensors](#connect-ir-breakbeam-sensors)
+    - [Threading](#threading)
+    - [Disk Treatment](#disk-treatment)
+  - [3D Components Overview](#3d-components-overview)
+
+---
+
 ## Demo
 
 https://user-images.githubusercontent.com/9831678/168770235-a08dd8c6-3110-4d33-b17b-d08c474d0a74.mp4
