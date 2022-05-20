@@ -6,7 +6,7 @@
 
 **A DIY USB powered bead dispenser**
 
-> Arduino sketch that accepts user input (i.e., an integer) and then starts a Nema 14 stepper motor. While the motor rotates, the attached infrared beam module counts objects which break the beam. The motor will stop when the object count equals the provided number by the user. This repo includes 3d stl files and a construction manual.
+> Contains an Arduino sketch that accepts user input (i.e., an integer) and then starts a Nema 14 stepper motor. While the motor rotates, the attached infrared beam module counts objects which break the beam. The motor will stop when the object count equals the provided number by the user. This repo includes all 3d stl files and the construction manual.
 
 ---
 
