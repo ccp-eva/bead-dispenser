@@ -1,7 +1,5 @@
 <img align="left" width="112" src="assets/beads-beads-svgrepo-com.svg">
 
-<img align="right" width="170" src="assets/pellet-dispenser-model-final.gif">
-
 # CCP Bead Dispenser
 
 **A DIY USB powered bead dispenser**
